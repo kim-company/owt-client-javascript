@@ -293,7 +293,7 @@ export class ConferencePeerConnectionChannel extends EventDispatcher {
           option: {audio: options.audio},
         });
 
-        if (Utils.isFirefox()) {
+        if (Utils.isFirefox() && Utils.sysInfo().runtime.version.split('.')[0] < 110) {
           // Firefox does not support encodings setting in addTransceiver.
           const parameters = transceiver.sender.getParameters();
           parameters.encodings = transceiverInit.sendEncodings;
@@ -320,7 +320,7 @@ export class ConferencePeerConnectionChannel extends EventDispatcher {
           option: {video: options.video},
         });
 
-        if (Utils.isFirefox()) {
+        if (Utils.isFirefox() && Utils.sysInfo().runtime.version.split('.')[0] < 110) {
           // Firefox does not support encodings setting in addTransceiver.
           const parameters = transceiver.sender.getParameters();
           parameters.encodings = transceiverInit.sendEncodings;
